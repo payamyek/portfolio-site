@@ -19,13 +19,13 @@ let ProjectDetails = (props) => {
         <span
           className="md:text-2xl text-xl font-light text-purple-400">
           {link === undefined ?
-            <span className="text-purple-700">
+            <span className="text-purple-400">
               Private
             </span> :
             <a href={link} rel="noreferrer" target="_blank"
                aria-label="View Project's Git Repository."
                className="hover:text-white">
-              Git Repo <FontAwesomeIcon icon={faArrowUpRightFromSquare}/>
+              Code&nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare}/>
             </a>
           }
         </span>
