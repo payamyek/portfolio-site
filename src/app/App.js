@@ -87,7 +87,7 @@ let Experience = () => (
         <li className="flex">
           <span className="font-bold flex-1">Systems Developer @ MPAC</span>
           <span className="md:hidden">2022</span>
-          <span className="md:inline hidden"> 4 Mos (Sep 2022 - Current)</span>
+          <span className="md:inline hidden"> 4 Mos (Sep 2022 - Present)</span>
         </li>
         <li className="flex">
           <span className="font-bold flex-1">Junior Systems Developer @ MPAC</span>
