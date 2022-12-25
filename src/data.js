@@ -29,28 +29,30 @@ export const projects = [
   {
     name: "Air Toronto",
     tech: "[Vue3, NodeJS, MongoDb, RestAPI]",
-    description: "Comprehensive flight ticket booking system built using Vue3 utilizing asynchronous task queues with workers to process application webhooks and emails.",
+    description: "Comprehensive flight booking system built with Vue3 using asynchronous task queues with workers to process application webhooks and emails.",
     link:"https://github.com/UTSCC09/project-frontend-frauds",
-    year: "2022"
   },
   {
     name: "Pawsup",
     tech: "[React Native, NodeJs, MongoDb, RestAPI]",
-    description: "Mobile application that enabled clients to purchase pet services built with React Native through Expo to deliver mobile app for both Android and iOS environments.",
-    year: "2021"
+    description: "Mobile application that enabled clients to purchase pet services built with React Native through Expo to deliver iOS and Android mobile apps.",
   },
   {
     name: "Jeopardy",
     tech: "[React, JavaScript, Redux, CSS]",
-    description: "Game of Jeopardy that allowed two teams to play a full fledged game with live score tracking that was built using React and Redux for state management.",
+    description: "Game of Jeopardy that allowed two teams to play Jeopardy with live score tracking that was built using React and Redux for state management.",
     link:"https://github.com/payamyek/Jeopardy",
-    year: "2020"
+  },
+  {
+    name: "Portfolio Site",
+    tech: "[React.js, TailWindCSS]",
+    description: "Personal portfolio site made using React.js and TailWindCSS.",
+    link:"https://github.com/payamyek/portfolio-site"
   },
   {
     name: "Supreme Car Rentals",
     tech: "[Java, SwingUI, SQL]",
     description: "Car rental application built using Java Swing powered by an embedded SQLite database which allowed clients to rent cars and receive an auto-generated printable PDF invoice with booking details.",
     link:"https://github.com/payamyek/SupremeCarRentals",
-    year: "2019"
   }
 ]

@@ -34,7 +34,7 @@ let PageHeading = () => (
 )
 
 let UserDetails = () => (
-  <div className="md:flex md:flex-row hidden gap-x-4 md:mt-3 mt-1">
+  <div className="md:flex md:flex-row hidden gap-x-4 mt-1">
     <div className="flex flex-col text-purple-400">
       <span className="md:text-lg"><FontAwesomeIcon color="lawngreen" icon={faMapPin}/> Toronto, Canada</span>
     </div>
@@ -57,7 +57,7 @@ let PersonalLinks = () => (
 )
 
 let AboutMe = () => (
-  <div className="flex-col flex md:mt-9 mt-5">
+  <div className="flex-col flex md:mt-6 mt-5">
     <div className="flex flex-row">
       <h1 className="md:text-3xl text-xl mb-3">
         About Me
@@ -76,7 +76,7 @@ let AboutMe = () => (
 );
 
 let Experience = () => (
-  <div className="flex-col flex md:mt-9 mt-5">
+  <div className="flex-col flex md:mt-6 mt-5">
     <div className="flex flex-row">
     <h1 className="md:text-3xl text-xl mb-3">
       Experience
@@ -100,7 +100,7 @@ let Experience = () => (
 )
 
 let Projects = () => (
-  <div className="flex-col flex md:mt-9 mt-5">
+  <div className="flex-col flex md:mt-6 mt-5">
     <div className="flex flex-row">
         <h1 className="md:text-3xl text-xl">
           My Projects

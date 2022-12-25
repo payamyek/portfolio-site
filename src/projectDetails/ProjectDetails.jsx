@@ -8,11 +8,11 @@ let ProjectDetails = (props) => {
     <div className="mt-5">
       <div className="flex flex-row">
       <span
-        className="md:text-2xl text-xl font-light flex-1 text-purple-400">
-        <span>
+        className="flex-1">
+        <span className="md:text-2xl text-xl text-purple-400 underline">
           {name}
         </span>
-        <span className="md:inline hidden">
+        <span className="md:inline hidden md:text-base">
           &nbsp;{tech}
         </span>
       </span>
