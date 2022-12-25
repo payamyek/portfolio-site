@@ -28,13 +28,13 @@ export const links = [
 export const projects = [
   {
     name: "Air Toronto",
-    tech: "[Vue3, Node.js, MongoDb, RestAPI]",
+    tech: "[Vue3, Node.js, MongoDB, RestAPI]",
     description: "Comprehensive flight booking system built with Vue3 using asynchronous task queues with workers to process application webhooks and emails.",
     link:"https://github.com/UTSCC09/project-frontend-frauds",
   },
   {
     name: "Pawsup",
-    tech: "[React Native, Node.js, MongoDb, RestAPI]",
+    tech: "[React Native, Node.js, MongoDB, RestAPI]",
     description: "Mobile application that enabled clients to purchase pet services built with React Native through Expo to deliver iOS and Android mobile apps.",
   },
   {
