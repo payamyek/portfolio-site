@@ -39,7 +39,7 @@ let UserDetails = () => (
       <span className="md:text-lg"><FontAwesomeIcon color="lawngreen" icon={faMapPin}/> Toronto, Canada</span>
     </div>
     <div className="flex flex-col text-purple-400">
-      <span className="md:text-lg"><FontAwesomeIcon color="lawngreen" icon={faGraduationCap}/> UofT 2022 B.Sc (Hons)</span>
+      <span className="md:text-lg"><FontAwesomeIcon color="lawngreen" icon={faGraduationCap}/> 2022 UofT B.Sc (Hons)</span>
     </div>
   </div>
 )

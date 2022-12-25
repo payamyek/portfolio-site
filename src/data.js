@@ -45,8 +45,8 @@ export const projects = [
   },
   {
     name: "Portfolio Site",
-    tech: "[React.js, TailWindCSS]",
-    description: "Personal portfolio site made using React.js and TailWindCSS.",
+    tech: "[React.js, Tailwind CSS]",
+    description: "Personal portfolio site made using React.js and Tailwind CSS.",
     link:"https://github.com/payamyek/portfolio-site"
   },
   {
