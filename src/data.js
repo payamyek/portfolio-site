@@ -1,10 +1,10 @@
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faFileDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faFilePdf, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export const links = [
   {
-    url: 'https://github.com/payamyek/career/blob/e1005da8687851e02b6f54cd6404e39a45fbc898/resume/resume.pdf?raw=true',
-    icon: faFileDownload,
+    url: 'https://cdn.jsdelivr.net/gh/payamyek/career/resume/resume.pdf',
+    icon: faFilePdf,
     ariaLabel: "Download my resume."
   },
   {
