@@ -3,7 +3,7 @@ import { faFilePdf, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export const links = [
   {
-    url: 'https://cdn.jsdelivr.net/gh/payamyek/career/resume/resume.pdf',
+    url: 'https://cdn.jsdelivr.net/gh/payamyek/career@889c1519500f6b3c6581a35a74737319f6aa11ca/resume/resume.pdf',
     icon: faFilePdf,
     ariaLabel: "Download my resume."
   },
