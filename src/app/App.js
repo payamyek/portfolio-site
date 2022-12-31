@@ -144,9 +144,9 @@ let Footer = (props) => (
     <div className="flex-1">
       <small>&copy; Copyright 2022, Payam Yektamaram</small>
     </div>
-    <div>
+    <div className="md:flex hidden">
       <small>
-        Last updated at {getGHReadableDate(props.lastUpdated)}
+        Last updated {getGHReadableDate(props.lastUpdated)}
       </small>
     </div>
   </footer>
