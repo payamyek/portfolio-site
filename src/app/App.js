@@ -10,14 +10,13 @@ import { experiences, links, projects, githubAPI } from '../data'
 import { useEffect, useState } from 'react'
 
 let App = () => {
-  const [lastUpdated, setLastUpdated] = useState("");
+  const [lastUpdated, setLastUpdated] = useState('')
 
-  useEffect(()=> {
-      fetch(githubAPI.stats)
-        .then((data) => data.json())
-        .then(({ pushed_at })=> setLastUpdated(pushed_at))
+  useEffect(() => {
+    fetch(githubAPI.stats)
+      .then((data) => data.json())
+      .then((data) => setLastUpdated(data.commit.commit.author.date))
   })
-
 
   return (
     <div
@@ -140,16 +139,16 @@ let Projects = () => (
 )
 
 let Footer = (props) => (
-  <footer className="flex flex-row my-4">
+  <footer className="flex flex-col md:flex-row my-4">
     <div className="flex-1">
-      <small>&copy; Copyright 2022, Payam Yektamaram</small>
-    </div>
-    <div className="md:flex hidden">
       <small>
         Last updated {getGHReadableDate(props.lastUpdated)}
       </small>
     </div>
+    <div>
+      <small>&copy; Copyright 2022, Payam Yektamaram</small>
+    </div>
   </footer>
 )
 
-export default App;
+export default App

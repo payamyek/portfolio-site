@@ -2,7 +2,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faFilePdf, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 export const githubAPI = {
-  stats: "https://api.github.com/repos/payamyek/portfolio-site",
+  stats: "https://api.github.com/repos/payamyek/portfolio-site/branches/main",
 }
 
 export const links = [
