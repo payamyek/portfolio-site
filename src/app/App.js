@@ -3,12 +3,22 @@ import '../index.css'
 import TypewriterEffect from '../typewriterEffect/TypewriterEffect'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapPin, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
-import { getDateRange } from '../utils/dateUtils.js'
+import { getDateRange, getGHReadableDate } from '../utils/dateUtils.js'
 
 import ProjectDetails from '../projectDetails/ProjectDetails'
-import { experiences, links, projects } from '../data'
+import { experiences, links, projects, githubAPI } from '../data'
+import { useEffect, useState } from 'react'
 
 let App = () => {
+  const [lastUpdated, setLastUpdated] = useState("");
+
+  useEffect(()=> {
+      fetch(githubAPI.stats)
+        .then((data) => data.json())
+        .then(({ pushed_at })=> setLastUpdated(pushed_at))
+  })
+
+
   return (
     <div
       className="lg:max-w-4xl md:mt-10 md:max-w-2xl mx-auto flex flex-col mt-5 max-w-sm select-none">
@@ -20,7 +30,7 @@ let App = () => {
       <AboutMe/>
       <Experience/>
       <Projects/>
-      <Footer/>
+      <Footer lastUpdated={lastUpdated}/>
     </div>
   )
 }
@@ -129,12 +139,17 @@ let Projects = () => (
   </div>
 )
 
-let Footer = () => (
-  <div className="flex flex-row my-4">
-    <footer>
+let Footer = (props) => (
+  <footer className="flex flex-row my-4">
+    <div className="flex-1">
       <small>&copy; Copyright 2022, Payam Yektamaram</small>
-    </footer>
-  </div>
+    </div>
+    <div>
+      <small>
+        Last updated at {getGHReadableDate(props.lastUpdated)}
+      </small>
+    </div>
+  </footer>
 )
 
-export default App
+export default App;

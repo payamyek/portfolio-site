@@ -23,3 +23,22 @@ const dateDifferenceInMonths = (startDate, endDate) => {
 export const getDateRange = (startDate, endDate) => {
   return `(${dateDifferenceInMonths(startDate, endDate)} Mos) ${getMonthYear(startDate)} - ${getMonthYear(endDate)}`
 }
+
+const padDate = (num) => {
+  if (num < 10)
+    return `0${num}`
+  return num
+}
+
+export const getGHReadableDate = (ghDate) => {
+  const date = new Date(ghDate);
+
+  console.log(date);
+
+  let day = padDate(date.getDate());
+  let month = padDate(date.getMonth() + 1);
+  let hours = padDate(date.getHours());
+  let minutes = padDate(date.getMinutes());
+
+  return `${hours}:${minutes} ${day}/${month}/${date.getFullYear()}`
+}
