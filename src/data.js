@@ -52,8 +52,8 @@ export const projects = [
   },
   {
     name: 'Jeopardy',
-    tech: '[React, JavaScript, Redux, CSS]',
-    description: 'Game of Jeopardy that allowed two teams to play Jeopardy with live score tracking that was built using React and Redux for state management.',
+    tech: '[React.js, JavaScript, Redux, CSS]',
+    description: 'Game of Jeopardy that allowed two teams to play Jeopardy with live score tracking that was built using React.js and Redux for state management.',
     link: 'https://github.com/payamyek/Jeopardy',
   },
   {
@@ -64,8 +64,8 @@ export const projects = [
   },
   {
     name: 'Supreme Car Rentals',
-    tech: '[Java, Swing, SQL]',
-    description: 'Car rental application built using Java Swing powered by an embedded SQLite database which allowed clients to rent cars and receive an auto-generated printable PDF invoice with booking details.',
+    tech: '[Java, Swing, SQLite]',
+    description: 'Car rental application built using Java Swing powered by SQLite which enabled clients to rent cars and receive auto-generated printable PDF invoices with booking details.',
     link: 'https://github.com/payamyek/SupremeCarRentals',
   },
 ]
