@@ -1,15 +1,16 @@
 import './App.css';
 import '../index.css'
-import { Typewriter } from 'react-simple-typewriter';
+import TypewriterEffect from "../typewriterEffect/TypewriterEffect";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { getDateRange } from "../utils/dateUtils.js";
 
 import ProjectDetails from '../projectDetails/ProjectDetails';
-import {links, projects} from '../data';
+import { experiences, links, projects } from '../data'
 
 let App = () => {
   return (
-    <div className="lg:max-w-4xl md:mt-10 md:max-w-2xl mx-auto flex flex-col mt-5 max-w-xs select-none">
+    <div className="lg:max-w-4xl md:mt-10 md:max-w-2xl mx-auto flex flex-col mt-5 max-w-sm select-none">
       <div className="md:flex-row flex flex-col ">
         <PageHeading />
         <PersonalLinks />
@@ -26,7 +27,7 @@ let App = () => {
 let PageHeading = () => (
   <div className="md:flex-1 md:basis-3/5 pb-0">
     <h1 className="md:text-5xl md:min-h-[50px] text-2xl font-bold min-h-[40px] md:text-left text-center">
-      <Typewriter
+      <TypewriterEffect
         words={['Greetings Visitor!', "Full-stack Developer", 'Payam Yektamaram']}
       />
     </h1>
@@ -85,16 +86,15 @@ let Experience = () => (
     </div>
     <div className="flex flex-row">
       <ul className="text-white md:text-xl text-sm flex-1">
-        <li className="flex">
-          <span className="font-bold flex-1">Systems Developer @ MPAC</span>
-          <span className="md:hidden">2022</span>
-          <span className="md:inline hidden"> 4 Mos (Sep 2022 - Present)</span>
-        </li>
-        <li className="flex">
-          <span className="font-bold flex-1">Junior Systems Developer @ MPAC</span>
-          <span className="md:hidden">2020</span>
-          <span className="md:inline hidden">12 Mos (Jan 2020 - Dec 2020)</span>
-        </li>
+        {
+          experiences.map((data, i) => (
+            <li className="flex" key={i}>
+              <span className="font-bold flex-1">{data.position} @ {data.company}</span>
+              <span className="md:hidden">{data.startDate.getFullYear()}</span>
+              <span className="md:inline hidden">{getDateRange(data.startDate, data.endDate)}</span>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>
