@@ -32,13 +32,13 @@ export const experiences = [
   {
     position: 'Systems Developer',
     company: 'MPAC',
-    startDate: new Date ('September 2022'),
+    startDate: new Date (2022, 8),
   },
   {
     position: 'Junior Systems Developer',
     company: 'MPAC',
-    startDate: new Date('January 2020'),
-    endDate: new Date('December 2020'),
+    startDate: new Date(2020, 0),
+    endDate: new Date(2020, 11),
   },
 ]
 
