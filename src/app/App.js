@@ -20,7 +20,7 @@ let App = () => {
 
   return (
     <div
-      className="lg:max-w-4xl md:mt-10 md:max-w-2xl mx-auto flex flex-col mt-5 max-w-sm select-none">
+      className="md:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 md:w-4/5 w-5/6 select-none">
       <div className="md:flex-row flex flex-col ">
         <PageHeading/>
         <PersonalLinks/>
