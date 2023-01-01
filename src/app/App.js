@@ -16,7 +16,7 @@ let App = () => {
     fetch(githubAPI.stats)
       .then((data) => data.json())
       .then((data) => setLastUpdated(data.commit.commit.author.date))
-  })
+  }, [])
 
   return (
     <div
