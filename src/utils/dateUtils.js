@@ -46,8 +46,7 @@ export const getDateRange = (startDate, endDate) => {
 
 // show date in the form of "4 days ago", "2 minutes ago"
 export const getRelativeDate = (date) => {
-  const now = new Date()
-  const delta = now.getTime() - date.getTime()
+  const delta = Date.now() - date.getTime()
   let value, units
 
   if (delta < MS_PER_SEC)
