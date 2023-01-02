@@ -3,7 +3,7 @@ import '../index.css'
 import TypewriterEffect from '../typewriterEffect/TypewriterEffect'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapPin, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
-import { getDateRange, getGHReadableDate } from '../utils/dateUtils.js'
+import { getDateRange, getRelativeDate } from '../utils/dateUtils.js'
 
 import ProjectDetails from '../projectDetails/ProjectDetails'
 import { experiences, links, projects, githubAPI } from '../data'
@@ -142,7 +142,7 @@ let Footer = (props) => (
   <footer className="flex flex-col md:flex-row my-4">
     <div className="flex-1">
       <small>
-        Last updated {getGHReadableDate(props.lastUpdated)}
+        Last updated {getRelativeDate(new Date(props.lastUpdated))}
       </small>
     </div>
     <div>

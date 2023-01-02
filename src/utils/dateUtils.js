@@ -13,6 +13,13 @@ const MONTHS = [
   'Dec',
 ]
 
+export const MS_PER_SEC = 1000
+export const MS_PER_MIN = MS_PER_SEC * 60
+export const MS_PER_HOUR = MS_PER_MIN * 60
+export const MS_PER_DAY = MS_PER_HOUR * 24
+export const MS_PER_MONTH = MS_PER_DAY * 30
+export const MS_PER_YEAR = MS_PER_MONTH * 12
+
 const getMonthYear = (date) => {
   if (date === undefined || date === null)
     return 'Present'
@@ -38,36 +45,38 @@ export const getDateRange = (startDate, endDate) => {
 }
 
 // show date in the form of "4 days ago", "2 minutes ago"
-export const getGHReadableDate = (ghDate) => {
-  const date = new Date(ghDate)
+export const getRelativeDate = (date) => {
   const now = new Date()
-  let result
+  const delta = now.getTime() - date.getTime()
+  let value, units
 
-  if (date.getFullYear() === now.getFullYear() - 1) {
-    result = '1 year ago'
-  } else if (date.getFullYear() < now.getFullYear()) {
-    result = `${now.getFullYear() - date.getFullYear()} years go`
-  } else if (date.getMonth() === now.getMonth() - 1) {
-    result = '1 month ago'
-  } else if (date.getMonth() < now.getMonth()) {
-    result = `${now.getMonth() - date.getMonth()} months ago`
-  } else if (date.getDay() === now.getDay() - 1) {
-    result = '1 day ago'
-  } else if (date.getDay() < now.getDay()) {
-    result = `${now.getDay() - date.getDay()} days ago`
-  } else if (date.getHours() === now.getHours() - 1) {
-    result = '1 hour ago'
-  } else if (date.getHours() < now.getHours()) {
-    result = `${now.getHours() - date.getHours()} hours ago`
-  } else if (date.getMinutes() === now.getMinutes() - 1) {
-    result = '1 minute ago'
-  } else if (date.getMinutes() < now.getMinutes()) {
-    result = `${now.getMinutes() - date.getMinutes()} minutes ago`
-  } else if (date.getSeconds() === now.getSeconds() - 1) {
-    result = 'now'
-  } else if (date.getSeconds() < now.getSeconds()) {
-    result = `${now.getSeconds() - date.getSeconds()} seconds ago`
+  if (delta < MS_PER_SEC)
+    return 'now'
+
+  // determine unit and value of delta
+  if (delta < MS_PER_MIN) {
+    value = delta / MS_PER_SEC
+    units = 'second'
+  } else if (delta < MS_PER_HOUR) {
+    value = delta / MS_PER_MIN
+    units = 'minute'
+  } else if (delta < MS_PER_DAY) {
+    value = delta / MS_PER_HOUR
+    units = 'hour'
+  } else if (delta < MS_PER_MONTH) {
+    value = delta / MS_PER_DAY
+    units = 'day'
+  } else if (delta < MS_PER_YEAR) {
+    value = delta / MS_PER_MONTH
+    units = 'month'
+  } else {
+    value = delta / MS_PER_YEAR
+    units = 'year'
   }
 
-  return result
+  // round down value
+  value = Math.floor(value)
+
+  // format result
+  return `${value} ${units}${value === 1 ? '' : 's'} ago`
 }
