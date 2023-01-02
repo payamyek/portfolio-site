@@ -13,12 +13,14 @@ const MONTHS = [
   'Dec',
 ]
 
-export const MS_PER_SEC = 1000
-export const MS_PER_MIN = MS_PER_SEC * 60
-export const MS_PER_HOUR = MS_PER_MIN * 60
-export const MS_PER_DAY = MS_PER_HOUR * 24
-export const MS_PER_MONTH = MS_PER_DAY * 30
-export const MS_PER_YEAR = MS_PER_MONTH * 12
+const MILLISECONDS = {
+  SECONDS: 1000,
+  MINUTE: 1000 * 60,
+  HOUR: 1000 * 60 * 60,
+  DAY: 1000 * 60 * 60 * 24,
+  MONTH: 1000 * 60 * 60 * 24 * 30,
+  YEAR: 1000 * 60 * 60 * 24 * 30 * 12,
+}
 
 const getMonthYear = (date) => {
   if (date === undefined || date === null)
@@ -39,37 +41,41 @@ const dateDifferenceInMonths = (startDate, endDate) => {
     (endDate.getFullYear() - startDate.getFullYear())
 }
 
-export const getDateRange = (startDate, endDate) => {
+const getDateRange = (startDate, endDate) => {
   return `(${dateDifferenceInMonths(startDate, endDate)} Mos) ${getMonthYear(
     startDate)} - ${getMonthYear(endDate)}`
 }
 
 // show date in the form of "4 days ago", "2 minutes ago"
-export const getRelativeDate = (date) => {
+const getRelativeDate = (date) => {
+  if (date === undefined || date === null)
+    return ''
+
+  // get difference in milliseconds
   const delta = Date.now() - date.getTime()
   let value, units
 
-  if (delta < MS_PER_SEC)
+  if (delta < MILLISECONDS.SECONDS)
     return 'now'
 
   // determine unit and value of delta
-  if (delta < MS_PER_MIN) {
-    value = delta / MS_PER_SEC
+  if (delta < MILLISECONDS.MINUTE) {
+    value = delta / MILLISECONDS.SECONDS
     units = 'second'
-  } else if (delta < MS_PER_HOUR) {
-    value = delta / MS_PER_MIN
+  } else if (delta < MILLISECONDS.HOUR) {
+    value = delta / MILLISECONDS.MINUTE
     units = 'minute'
-  } else if (delta < MS_PER_DAY) {
-    value = delta / MS_PER_HOUR
+  } else if (delta < MILLISECONDS.DAY) {
+    value = delta / MILLISECONDS.HOUR
     units = 'hour'
-  } else if (delta < MS_PER_MONTH) {
-    value = delta / MS_PER_DAY
+  } else if (delta < MILLISECONDS.MONTH) {
+    value = delta / MILLISECONDS.DAY
     units = 'day'
-  } else if (delta < MS_PER_YEAR) {
-    value = delta / MS_PER_MONTH
+  } else if (delta < MILLISECONDS.YEAR) {
+    value = delta / MILLISECONDS.MONTH
     units = 'month'
   } else {
-    value = delta / MS_PER_YEAR
+    value = delta / MILLISECONDS.YEAR
     units = 'year'
   }
 
@@ -79,3 +85,5 @@ export const getRelativeDate = (date) => {
   // format result
   return `${value} ${units}${value === 1 ? '' : 's'} ago`
 }
+
+export { getDateRange, getRelativeDate, MILLISECONDS }
