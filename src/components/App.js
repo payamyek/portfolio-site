@@ -1,11 +1,11 @@
 import './App.css'
 import '../index.css'
-import TypewriterEffect from '../typewriterEffect/TypewriterEffect'
+import TypewriterEffect from './TypewriterEffect'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapPin, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { getDateRange, getRelativeDate } from '../utils/dateUtils.js'
 
-import ProjectDetails from '../projectDetails/ProjectDetails'
+import ProjectDetails from './ProjectDetails'
 import { experiences, links, projects, githubAPI } from '../data'
 import { useEffect, useState } from 'react'
 
@@ -27,7 +27,7 @@ let App = () => {
       </div>
       <UserDetails/>
       <AboutMe/>
-      <Experience/>
+      <Experiences/>
       <Projects/>
       <Footer lastUpdated={lastUpdated}/>
     </div>
@@ -86,7 +86,8 @@ let AboutMe = () => (
       <p className="md:text-xl text-justify text-white text-sm">
         I am a<span
         className="font-bold">&nbsp;full-stack developer&nbsp;</span>
-        currently working at the<span className="font-bold">&nbsp;Municipal Property Assessment Corporation.&nbsp;</span>
+        currently working at the<span className="font-bold">&nbsp;Municipal
+        Property Assessment Corporation.&nbsp;</span>
         I have always been interested in technology and building new things.
         Which is why I am currently learning<span
         className="font-bold">&nbsp;Rust&nbsp;</span>in hopes
@@ -98,7 +99,7 @@ let AboutMe = () => (
   </div>
 )
 
-let Experience = () => (
+let Experiences = () => (
   <div className="flex-col flex md:mt-6 mt-5">
     <div className="flex flex-row">
       <h1 className="md:text-3xl text-xl mb-3">
