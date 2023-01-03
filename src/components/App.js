@@ -6,20 +6,19 @@ import { faMapPin, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { getDateRange, getRelativeDate } from '../utils/dateUtils.js'
 
 import ProjectDetails from './ProjectDetails'
-import { experiences, links, projects, githubAPI } from '../data'
+import { experiences, links, projects } from '../data'
 import { useEffect, useState } from 'react'
+import { getBranchLatestCommitDate } from '../api/githubAPI'
 
 let App = () => {
   const [lastUpdated, setLastUpdated] = useState('')
 
   useEffect(() => {
-    fetch(githubAPI.stats)
-      .then((data) => data.json())
-      .then((data) => setLastUpdated(data.commit.commit.author.date))
+    getBranchLatestCommitDate()
+      .then(date => setLastUpdated(date))
   }, [])
 
-  return (
-    <div
+  return (<div
       className="md:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 md:w-4/5 w-5/6 select-none">
       <div className="md:flex-row flex flex-col ">
         <PageHeading/>
@@ -30,23 +29,18 @@ let App = () => {
       <Experiences/>
       <Projects/>
       <Footer lastUpdated={lastUpdated}/>
-    </div>
-  )
+    </div>)
 }
 
-let PageHeading = () => (
-  <div className="md:flex-1 md:basis-3/5 pb-0">
+let PageHeading = () => (<div className="md:flex-1 md:basis-3/5 pb-0">
     <h1
       className="md:text-5xl md:min-h-[50px] text-2xl font-bold min-h-[40px] md:text-left text-center">
       <TypewriterEffect
         words={[
-          'Greetings Visitor!',
-          'Full-stack Developer',
-          'Payam Yektamaram']}
+          'Greetings Visitor!', 'Full-stack Developer', 'Payam Yektamaram']}
       />
     </h1>
-  </div>
-)
+  </div>)
 
 let UserDetails = () => (
   <div className="md:flex md:flex-row hidden gap-x-4 mt-1">
@@ -58,25 +52,19 @@ let UserDetails = () => (
       <span className="md:text-lg"><FontAwesomeIcon color="lawngreen"
                                                     icon={faGraduationCap}/> 2022 UofT B.Sc (Hons)</span>
     </div>
-  </div>
-)
+  </div>)
 
-let PersonalLinks = () => (
-  <div
+let PersonalLinks = () => (<div
     className="md:flex-1 md:text-3xl md:mt-0 flex text-xl mt-3 font-bold text-center items-end">
-    {
-      links.map((link, i) =>
-        <a className="flex-1 cursor-pointer" href={link.url} target="_blank"
-           rel="noreferrer" aria-label={link.ariaLabel} key={i}>
-          <FontAwesomeIcon icon={link.icon} className="hover:scale-105"/>
-        </a>,
-      )
-    }
-  </div>
-)
+    {links.map((link, i) => <a className="flex-1 cursor-pointer" href={link.url}
+                               target="_blank"
+                               rel="noreferrer" aria-label={link.ariaLabel}
+                               key={i}>
+      <FontAwesomeIcon icon={link.icon} className="hover:scale-105"/>
+    </a>)}
+  </div>)
 
-let AboutMe = () => (
-  <div className="flex-col flex md:mt-6 mt-5">
+let AboutMe = () => (<div className="flex-col flex md:mt-6 mt-5">
     <div className="flex flex-row">
       <h1 className="md:text-3xl text-xl mb-3">
         About Me
@@ -96,11 +84,9 @@ let AboutMe = () => (
         I am currently building!
       </p>
     </div>
-  </div>
-)
+  </div>)
 
-let Experiences = () => (
-  <div className="flex-col flex md:mt-6 mt-5">
+let Experiences = () => (<div className="flex-col flex md:mt-6 mt-5">
     <div className="flex flex-row">
       <h1 className="md:text-3xl text-xl mb-3">
         Experience
@@ -108,48 +94,39 @@ let Experiences = () => (
     </div>
     <div className="flex flex-row">
       <ul className="text-white md:text-xl text-sm flex-1">
-        {
-          experiences.map((data, i) => (
-            <li className="flex" key={i}>
+        {experiences.map((data, i) => (<li className="flex" key={i}>
               <span className="font-bold flex-1">
                 {data.position} @ {data.company}
               </span>
-              <span className="md:hidden text-purple-400">
+            <span className="md:hidden text-purple-400">
                 {data.startDate.getFullYear()}
               </span>
-              <span className="md:inline hidden text-purple-400">
+            <span className="md:inline hidden text-purple-400">
                 {getDateRange(data.startDate, data.endDate)}
               </span>
-            </li>
-          ))
-        }
+          </li>))}
       </ul>
     </div>
-  </div>
-)
+  </div>)
 
-let Projects = () => (
-  <div className="flex-col flex md:mt-6 mt-5">
+let Projects = () => (<div className="flex-col flex md:mt-6 mt-5">
     <div className="flex flex-row">
       <h1 className="md:text-3xl text-xl">
         My Projects
       </h1>
     </div>
     {projects.map((project, i) => <ProjectDetails {...project} key={i}/>)}
-  </div>
-)
+  </div>)
 
-let Footer = (props) => (
-  <footer className="flex flex-col md:flex-row my-4">
+let Footer = (props) => (<footer className="flex flex-col md:flex-row my-4">
     <div className="flex-1">
       <small>
         Last updated {getRelativeDate(new Date(props.lastUpdated))}
       </small>
     </div>
     <div>
-      <small>&copy; Copyright 2022, Payam Yektamaram</small>
+      <small>&copy; Copyright 2023, Payam Yektamaram</small>
     </div>
-  </footer>
-)
+  </footer>)
 
 export default App

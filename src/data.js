@@ -1,10 +1,6 @@
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faFilePdf, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
-export const githubAPI = {
-  stats: "https://api.github.com/repos/payamyek/portfolio-site/branches/main",
-}
-
 export const links = [
   {
     url: 'https://cdn.jsdelivr.net/gh/payamyek/career@889c1519500f6b3c6581a35a74737319f6aa11ca/resume/resume.pdf',
@@ -32,7 +28,7 @@ export const experiences = [
   {
     position: 'Systems Developer',
     company: 'MPAC',
-    startDate: new Date (2022, 8),
+    startDate: new Date(2022, 8),
   },
   {
     position: 'Junior Systems Developer',
