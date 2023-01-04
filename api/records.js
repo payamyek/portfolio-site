@@ -17,5 +17,5 @@ export default async function handler (request, response) {
     page: { offset, limit },
   })*/
 
-  return response.json({ records: [] })
+  return response.json({ records: ["hey"] })
 }
