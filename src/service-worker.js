@@ -66,7 +66,7 @@ registerRoute(
   new CacheFirst({
     cacheName: 'github',
     plugins: [
-      new ExpirationPlugin({ maxAgeSeconds: 24 * 60 * 15 }),
+      new ExpirationPlugin({ maxAgeSeconds: 60 * 60 * 12} ), // 12 hours
     ],
   })
 );
