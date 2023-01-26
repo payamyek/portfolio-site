@@ -1,21 +1,21 @@
-import "./App.css";
-import "../index.css";
-import TypewriterEffect from "./TypewriterEffect";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapPin, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-import { getDateRange, getRelativeDate } from "../utils/dateUtils.js";
+import './App.css'
+import '../index.css'
+import TypewriterEffect from './TypewriterEffect'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapPin, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
+import { getDateRange, getRelativeDate } from '../utils/dateUtils.js'
 
-import ProjectDetails from "./ProjectDetails";
-import { experiences, links, projects } from "../data";
-import { useEffect, useState } from "react";
-import { getBranchLatestCommitDate } from "../api/githubAPI";
+import ProjectDetails from './ProjectDetails'
+import { experiences, links, projects } from '../data'
+import { useEffect, useState } from 'react'
+import { getBranchLatestCommitDate } from '../api/githubAPI'
 
 let App = () => {
-  const [lastUpdated, setLastUpdated] = useState("");
+  const [lastUpdated, setLastUpdated] = useState('')
 
   useEffect(() => {
-    getBranchLatestCommitDate().then((date) => setLastUpdated(date));
-  }, []);
+    getBranchLatestCommitDate().then((date) => setLastUpdated(date))
+  }, [])
 
   return (
     <div className="md:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 md:w-4/5 w-5/6 select-none">
@@ -29,38 +29,45 @@ let App = () => {
       <Projects />
       <Footer lastUpdated={lastUpdated} />
     </div>
-  );
-};
+  )
+}
 
 let PageHeading = () => (
   <div className="md:flex-1 md:basis-3/5 pb-0">
     <h1 className="md:text-5xl md:min-h-[50px] text-2xl font-bold min-h-[40px] md:text-left text-center">
       <TypewriterEffect
         words={[
-          "Greetings Visitor!",
-          "Full-stack Developer",
-          "Payam Yektamaram",
+          'Greetings Visitor!',
+          'Full-stack Developer',
+          'Payam Yektamaram',
         ]}
       />
     </h1>
   </div>
-);
+)
 
 let UserDetails = () => (
   <div className="md:flex md:flex-row hidden gap-x-4 mt-1">
     <div className="flex flex-col text-purple-400">
       <span className="md:text-lg">
-        <FontAwesomeIcon color="lawngreen" icon={faMapPin} /> Toronto, Canada
+        <FontAwesomeIcon
+          color="lawngreen"
+          icon={faMapPin}
+        />{' '}
+        Toronto, Canada
       </span>
     </div>
     <div className="flex flex-col text-purple-400">
       <span className="md:text-lg">
-        <FontAwesomeIcon color="lawngreen" icon={faGraduationCap} /> 2022 UofT
-        B.Sc (Hons)
+        <FontAwesomeIcon
+          color="lawngreen"
+          icon={faGraduationCap}
+        />{' '}
+        2022 UofT B.Sc (Hons)
       </span>
     </div>
   </div>
-);
+)
 
 let PersonalLinks = () => (
   <div className="md:flex-1 md:text-3xl md:mt-0 flex text-xl mt-3 font-bold text-center items-end">
@@ -71,13 +78,15 @@ let PersonalLinks = () => (
         target="_blank"
         rel="noreferrer"
         aria-label={link.ariaLabel}
-        key={i}
-      >
-        <FontAwesomeIcon icon={link.icon} className="hover:scale-105" />
+        key={i}>
+        <FontAwesomeIcon
+          icon={link.icon}
+          className="hover:scale-105"
+        />
       </a>
     ))}
   </div>
-);
+)
 
 let AboutMe = () => (
   <div className="flex-col flex md:mt-6 mt-5">
@@ -101,7 +110,7 @@ let AboutMe = () => (
       </p>
     </div>
   </div>
-);
+)
 
 let Experiences = () => (
   <div className="flex-col flex md:mt-6 mt-5">
@@ -111,7 +120,9 @@ let Experiences = () => (
     <div className="flex flex-row">
       <ul className="text-white md:text-xl text-sm flex-1">
         {experiences.map((data, i) => (
-          <li className="flex" key={i}>
+          <li
+            className="flex"
+            key={i}>
             <span className="font-bold flex-1">
               {data.position} @ {data.company}
             </span>
@@ -126,7 +137,7 @@ let Experiences = () => (
       </ul>
     </div>
   </div>
-);
+)
 
 let Projects = () => (
   <div className="flex-col flex md:mt-6 mt-5">
@@ -134,10 +145,13 @@ let Projects = () => (
       <h1 className="md:text-3xl text-xl">My Projects</h1>
     </div>
     {projects.map((project, i) => (
-      <ProjectDetails {...project} key={i} />
+      <ProjectDetails
+        {...project}
+        key={i}
+      />
     ))}
   </div>
-);
+)
 
 let Footer = (props) => (
   <footer className="flex flex-col md:flex-row my-4">
@@ -148,6 +162,6 @@ let Footer = (props) => (
       <small>&copy; Copyright 2023, Payam Yektamaram</small>
     </div>
   </footer>
-);
+)
 
-export default App;
+export default App

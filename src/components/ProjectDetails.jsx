@@ -1,8 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 
 let ProjectDetails = (props) => {
-  const { link, name, tech, description } = props;
+  const { link, name, tech, description } = props
 
   return (
     <div className="mt-5">
@@ -22,8 +22,7 @@ let ProjectDetails = (props) => {
               rel="noreferrer"
               target="_blank"
               aria-label="View Project's Git Repository."
-              className="hover:text-white"
-            >
+              className="hover:text-white">
               Code&nbsp;
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </a>
@@ -38,7 +37,7 @@ let ProjectDetails = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProjectDetails;
+export default ProjectDetails
