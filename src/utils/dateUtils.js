@@ -1,17 +1,17 @@
 const MONTHS = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-]
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 const MILLISECONDS = {
   SECONDS: 1000,
@@ -20,70 +20,71 @@ const MILLISECONDS = {
   DAY: 1000 * 60 * 60 * 24,
   MONTH: 1000 * 60 * 60 * 24 * 30,
   YEAR: 1000 * 60 * 60 * 24 * 30 * 12,
-}
+};
 
 const getMonthYear = (date) => {
-  if (date === undefined || date === null)
-    return 'Present'
-  return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`
-}
+  if (date === undefined || date === null) return "Present";
+  return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+};
 
 const dateDifferenceInMonths = (startDate, endDate) => {
-  if (startDate === null || startDate === undefined)
-    return 0
+  if (startDate === null || startDate === undefined) return 0;
 
   // provide end date as now
   if (endDate === null || endDate === undefined) {
-    endDate = new Date()
+    endDate = new Date();
   }
 
-  return 1 + endDate.getMonth() - startDate.getMonth() + 12 *
-    (endDate.getFullYear() - startDate.getFullYear())
-}
+  return (
+    1 +
+    endDate.getMonth() -
+    startDate.getMonth() +
+    12 * (endDate.getFullYear() - startDate.getFullYear())
+  );
+};
 
 const getDateRange = (startDate, endDate) => {
   return `(${dateDifferenceInMonths(startDate, endDate)} Mos) ${getMonthYear(
-    startDate)} - ${getMonthYear(endDate)}`
-}
+    startDate
+  )} - ${getMonthYear(endDate)}`;
+};
 
 // show date in the form of "4 days ago", "2 minutes ago"
 const getRelativeDate = (date) => {
-  if (date === undefined || date === null)
-    return ''
+  if (date === undefined || date === null) return "";
 
   // get difference in milliseconds
-  const delta = Date.now() - date.getTime()
-  let value, units
+  const delta = Date.now() - date.getTime();
+  let value, units;
 
-  if (delta < MILLISECONDS.SECONDS)
-    return 'now'
+  if (delta < MILLISECONDS.SECONDS) return "now";
 
   // determine unit and value of delta
   if (delta < MILLISECONDS.MINUTE) {
-    value = delta / MILLISECONDS.SECONDS
-    units = 'second'
+    value = delta / MILLISECONDS.SECONDS;
+    units = "second";
   } else if (delta < MILLISECONDS.HOUR) {
-    value = delta / MILLISECONDS.MINUTE
-    units = 'minute'
+    value = delta / MILLISECONDS.MINUTE;
+    units = "minute";
   } else if (delta < MILLISECONDS.DAY) {
-    value = delta / MILLISECONDS.HOUR
-    units = 'hour'
+    value = delta / MILLISECONDS.HOUR;
+    units = "hour";
   } else if (delta < MILLISECONDS.MONTH) {
-    value = delta / MILLISECONDS.DAY
-    units = 'day'
+    value = delta / MILLISECONDS.DAY;
+    units = "day";
   } else if (delta < MILLISECONDS.YEAR) {
-    value = delta / MILLISECONDS.MONTH
-    units = 'month'
+    value = delta / MILLISECONDS.MONTH;
+    units = "month";
   } else {
-    value = delta / MILLISECONDS.YEAR
-    units = 'year'
+    value = delta / MILLISECONDS.YEAR;
+    units = "year";
   }
 
   // round down value
-  value = Math.floor(value)
+  value = Math.floor(value);
 
   // format result
-  return `${value} ${units}${value === 1 ? '' : 's'} ago`
-}
+  return `${value} ${units}${value === 1 ? "" : "s"} ago`;
+};
 
-export { getDateRange, getRelativeDate, MILLISECONDS }
+export { getDateRange, getRelativeDate, MILLISECONDS };
