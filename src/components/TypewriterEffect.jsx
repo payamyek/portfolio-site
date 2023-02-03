@@ -1,88 +1,128 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-const TypewriterEffect = (props) => {
-  const { timeout = 100, pause = 850, deletionRate = 3, words } = props
+type TypewriterEffectProps = {
+  timeout?: Number,
+  pause?: Number,
+  deletionRate?: Number,
+  words: Array<String>,
+}
+
+const TypewriterEffect = (props: TypewriterEffectProps) => {
+  const {
+    timeout = 100,
+    pause = 850,
+    deletionRate = 3,
+    words,
+    callback,
+  } = props
 
   const el = useRef(null)
+  const [finished, setFinished] = useState(false)
 
   useEffect(() => {
-    let currentTimeoutId
+    let timeoutId
     const elCopy = el.current
 
-    const typingEffect = (
-      elem,
+    const typingEffect = ({
+      element,
       timeout,
-      pause,
       words,
-      index,
-      stringPos,
-      isAddChar = true
-    ) => {
-      // base cases
-      if (
-        index >= words.length ||
-        index < 0 ||
-        words.length === 0 ||
-        elem === undefined
-      ) {
-        return
-      } else if (index === words.length - 1 && isAddChar === false) {
+      arrayIndex,
+      stringIndex,
+      isAddChar = true,
+    }) => {
+      if (finished) {
+        elCopy.innerText = words[words.length - 1]
         return
       }
 
-      const word = words[index]
+      // base cases
+      if (
+        arrayIndex >= words.length ||
+        arrayIndex < 0 ||
+        words.length === 0 ||
+        element === undefined ||
+        (arrayIndex === words.length - 1 && isAddChar === false)
+      ) {
+        setFinished(true)
+        callback(true)
+        return
+      }
+
+      const word = words[arrayIndex]
 
       const addChar = () => {
-        elem.innerText = word.substring(0, stringPos + 1)
-        if (stringPos + 1 === word.length) {
-          typingEffect(elem, timeout, pause, words, index, stringPos, false)
-        } else {
-          typingEffect(
-            elem,
+        element.innerText = word.substring(0, stringIndex + 1)
+        if (stringIndex + 1 === word.length) {
+          typingEffect({
+            element,
             timeout,
             pause,
             words,
-            index,
-            stringPos + 1,
-            isAddChar
-          )
+            arrayIndex,
+            stringIndex,
+            isAddChar: false,
+          })
+        } else {
+          typingEffect({
+            element,
+            timeout,
+            pause,
+            words,
+            arrayIndex,
+            stringIndex: stringIndex + 1,
+            isAddChar,
+          })
         }
       }
 
       const removeChar = () => {
-        elem.innerText = word.substring(0, stringPos + 1)
-        if (stringPos === 0) {
-          typingEffect(elem, timeout, pause, words, index + 1, 0, true)
-        } else {
-          typingEffect(
-            elem,
+        element.innerText = word.substring(0, stringIndex + 1)
+        if (stringIndex === 0) {
+          typingEffect({
+            element,
             timeout,
             pause,
             words,
-            index,
-            stringPos - 1,
-            isAddChar
-          )
+            arrayIndex: arrayIndex + 1,
+            stringIndex: 0,
+            isAddChar: true,
+          })
+        } else {
+          typingEffect({
+            element,
+            timeout,
+            pause,
+            words,
+            arrayIndex,
+            stringIndex: stringIndex - 1,
+            isAddChar,
+          })
         }
       }
 
-      if (stringPos + 1 === word.length && isAddChar === false) {
-        currentTimeoutId = setTimeout(removeChar, pause)
+      if (stringIndex + 1 === word.length && isAddChar === false) {
+        timeoutId = setTimeout(removeChar, pause)
       } else if (isAddChar) {
-        currentTimeoutId = setTimeout(addChar, timeout)
+        timeoutId = setTimeout(addChar, timeout)
       } else {
-        currentTimeoutId = setTimeout(
-          removeChar,
-          Math.floor(timeout / deletionRate)
-        )
+        timeoutId = setTimeout(removeChar, Math.floor(timeout / deletionRate))
       }
     }
 
-    typingEffect(el.current, timeout, pause, words, 0, 0, true)
+    typingEffect({
+      element: el.current,
+      timeout,
+      pause,
+      words,
+      arrayIndex: 0,
+      stringIndex: 0,
+      isAddChar: true,
+    })
 
     return () => {
       // suspend active timeout
-      if (currentTimeoutId !== undefined) clearTimeout(currentTimeoutId)
+      if (timeoutId !== undefined) clearTimeout(timeoutId)
       elCopy.innerText = ''
     }
   }, [pause, timeout, words, deletionRate])

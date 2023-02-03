@@ -1,26 +1,39 @@
-import './App.css'
-import '../index.css'
-import TypewriterEffect from './TypewriterEffect'
+import { faGraduationCap, faMapPin, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapPin, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
+import '../index.css'
 import { getDateRange, getRelativeDate } from '../utils/dateUtils.js'
+import './App.css'
+import TypewriterEffect from './TypewriterEffect'
 
-import ProjectDetails from './ProjectDetails'
-import { experiences, links, projects } from '../data'
 import { useEffect, useState } from 'react'
 import { getBranchLatestCommitDate } from '../api/githubAPI'
+import { experiences, links, projects } from '../data'
+import ProjectDetails from './ProjectDetails'
 
 let App = () => {
   const [lastUpdated, setLastUpdated] = useState('')
+  const [typewriterAnimationFinished, setTypewriterAnimationFinished] = useState(false)
+  const [darkMode, setDarkMode] = useState(localStorage.theme === 'dark');
 
   useEffect(() => {
     getBranchLatestCommitDate().then((date) => setLastUpdated(date))
   }, [])
 
+  useEffect(() => {
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+      localStorage.theme = 'dark'
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.theme = 'light'
+    }
+  }, [])
+
   return (
     <div className="md:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 md:w-4/5 w-5/6 select-none">
       <div className="md:flex-row flex flex-col ">
-        <PageHeading />
+        <PageHeading callback={setTypewriterAnimationFinished} finished={typewriterAnimationFinished} setDarkMode={setDarkMode} darkMode={darkMode} />
         <PersonalLinks />
       </div>
       <UserDetails />
@@ -32,38 +45,52 @@ let App = () => {
   )
 }
 
-let PageHeading = () => (
-  <div className="md:flex-1 md:basis-3/5 pb-0">
-    <h1 className="md:text-5xl md:min-h-[50px] text-2xl font-bold min-h-[40px] md:text-left text-center">
-      <TypewriterEffect
-        words={[
-          'Greetings Visitor!',
-          'Full-stack Developer',
-          'Payam Yektamaram',
-        ]}
-      />
-    </h1>
-  </div>
-)
+let PageHeading = (props) => {
+  return (
+    <div className="md:flex-1 md:basis-3/5 pb-0" >
+      <h1 className="md:text-5xl md:min-h-[50px] text-2xl font-bold min-h-[40px] md:text-left text-center">
+        <TypewriterEffect
+          words={[
+            'Greetings Visitor!',
+            'Full-stack Developer',
+            'Payam Yektamaram',
+          ]}
+          callback={props.callback}
+        />
+        {props.finished ? (
+          props.darkMode ?
+            <FontAwesomeIcon icon={faSun} className="hover:scale-105 hover:rotate-45 hover:transition hover:ease-in-out hover:delay-550 ml-5 cursor-pointer" onClick={() => {
+              console.log("AAAAAAA")
+              localStorage.theme = 'light'
+              window.location.reload(false);
+            }} /> :
+            <FontAwesomeIcon icon={faMoon} className="hover:scale-105 hover:rotate-45 hover:transition hover:ease-in-out hover:delay-550 ml-5 cursor-pointer" onClick={() => {
+              console.log("ZZZZZZZ")
+              localStorage.theme = 'dark'
+              window.location.reload(false);
+            }} />) : null}
+      </h1>
+    </div>)
+}
 
 let UserDetails = () => (
   <div className="md:flex md:flex-row hidden gap-x-4 mt-1">
-    <div className="flex flex-col text-purple-400">
+    <div className="flex flex-col">
       <span className="md:text-lg">
         <FontAwesomeIcon
-          color="lawngreen"
           icon={faMapPin}
         />{' '}
-        Toronto, Canada
+        <span className='text-amber-800 dark:text-purple-400'>Toronto, Canada</span>
       </span>
     </div>
-    <div className="flex flex-col text-purple-400">
+    <div className="flex flex-col">
       <span className="md:text-lg">
         <FontAwesomeIcon
-          color="lawngreen"
           icon={faGraduationCap}
         />{' '}
-        2022 UofT B.Sc (Hons)
+        <span className='text-amber-800 dark:text-purple-400'>
+          2022 UofT B.Sc (Hons)
+        </span>
       </span>
     </div>
   </div>
@@ -94,7 +121,7 @@ let AboutMe = () => (
       <h1 className="md:text-3xl text-xl mb-3">About Me</h1>
     </div>
     <div className="flex flex-row">
-      <p className="md:text-xl text-justify text-white text-sm">
+      <p className="md:text-xl text-justify dark:text-white text-sm">
         I am a
         <span className="font-bold">&nbsp;full-stack developer&nbsp;</span>
         currently working at the
@@ -118,7 +145,7 @@ let Experiences = () => (
       <h1 className="md:text-3xl text-xl mb-3">Experience</h1>
     </div>
     <div className="flex flex-row">
-      <ul className="text-white md:text-xl text-sm flex-1">
+      <ul className=" dark:text-white md:text-xl text-sm flex-1">
         {experiences.map((data, i) => (
           <li
             className="flex"
@@ -126,10 +153,10 @@ let Experiences = () => (
             <span className="font-bold flex-1">
               {data.position} @ {data.company}
             </span>
-            <span className="md:hidden text-purple-400">
+            <span className="md:hidden ">
               {data.startDate.getFullYear()}
             </span>
-            <span className="md:inline hidden text-purple-400">
+            <span className="md:inline hidden dark:text-purple-400">
               {getDateRange(data.startDate, data.endDate)}
             </span>
           </li>
