@@ -125,7 +125,7 @@ const TypewriterEffect = (props: TypewriterEffectProps) => {
       if (timeoutId !== undefined) clearTimeout(timeoutId)
       elCopy.innerText = ''
     }
-  }, [pause, timeout, words, deletionRate])
+  }, [pause, timeout, words, deletionRate, callback, finished])
 
   return <span ref={el}></span>
 }

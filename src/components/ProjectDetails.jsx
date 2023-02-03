@@ -24,7 +24,7 @@ let ProjectDetails = (props) => {
               rel="noreferrer"
               target="_blank"
               aria-label="View Project's Git Repository."
-              className="hover:text-green-900 dark:hover:text-purple-300">
+              className="hover:text-green-600 dark:hover:text-purple-50">
               Code&nbsp;
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </a>

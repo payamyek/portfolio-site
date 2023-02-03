@@ -13,27 +13,38 @@ import ProjectDetails from './ProjectDetails'
 let App = () => {
   const [lastUpdated, setLastUpdated] = useState('')
   const [typewriterAnimationFinished, setTypewriterAnimationFinished] = useState(false)
-  const [darkMode, setDarkMode] = useState(localStorage.theme === 'dark');
+  const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
     getBranchLatestCommitDate().then((date) => setLastUpdated(date))
   }, [])
 
   useEffect(() => {
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.theme === undefined || localStorage.theme === 'dark') {
+      setTheme("dark")
+    } else {
+      setTheme("light")
+    }
+  }, [])
+
+  useEffect(() => {
+    const meta = document.querySelector("meta[name='theme-color']");
+
+    if (theme === 'dark') {
       document.documentElement.classList.add('dark')
+      meta.content = 'rgb(24 24 27)' // need for notch coloring on iPhones
       localStorage.theme = 'dark'
     } else {
       document.documentElement.classList.remove('dark')
+      meta.content = 'rgb(224 242 254)'
       localStorage.theme = 'light'
     }
-  }, [])
+  }, [theme])
 
   return (
     <div className="md:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 md:w-4/5 w-5/6 select-none">
       <div className="md:flex-row flex flex-col ">
-        <PageHeading callback={setTypewriterAnimationFinished} finished={typewriterAnimationFinished} setDarkMode={setDarkMode} darkMode={darkMode} />
+        <PageHeading callback={setTypewriterAnimationFinished} finished={typewriterAnimationFinished} setTheme={setTheme} theme={theme} />
         <PersonalLinks />
       </div>
       <UserDetails />
@@ -58,17 +69,9 @@ let PageHeading = (props) => {
           callback={props.callback}
         />
         {props.finished ? (
-          props.darkMode ?
-            <FontAwesomeIcon icon={faSun} className="hover:scale-105 hover:rotate-45 hover:transition hover:ease-in-out hover:delay-550 ml-5 cursor-pointer" onClick={() => {
-              console.log("AAAAAAA")
-              localStorage.theme = 'light'
-              window.location.reload(false);
-            }} /> :
-            <FontAwesomeIcon icon={faMoon} className="hover:scale-105 hover:rotate-45 hover:transition hover:ease-in-out hover:delay-550 ml-5 cursor-pointer" onClick={() => {
-              console.log("ZZZZZZZ")
-              localStorage.theme = 'dark'
-              window.location.reload(false);
-            }} />) : null}
+          props.theme === 'dark' ?
+            <FontAwesomeIcon icon={faSun} className="hover:scale-105 hover:rotate-45 hover:transition hover:ease-in-out hover:delay-550 ml-5 cursor-pointer" onClick={() => props.setTheme('light')} /> :
+            <FontAwesomeIcon icon={faMoon} className="hover:scale-105 hover:rotate-45 hover:transition hover:ease-in-out hover:delay-550 ml-5 cursor-pointer" onClick={() => props.setTheme('dark')} />) : null}
       </h1>
     </div>)
 }
@@ -145,7 +148,7 @@ let Experiences = () => (
       <h1 className="md:text-3xl text-xl mb-3">Experience</h1>
     </div>
     <div className="flex flex-row">
-      <ul className=" dark:text-white md:text-xl text-sm flex-1">
+      <ul className="dark:text-white text-amber-800 md:text-xl text-sm flex-1">
         {experiences.map((data, i) => (
           <li
             className="flex"
@@ -156,7 +159,7 @@ let Experiences = () => (
             <span className="md:hidden ">
               {data.startDate.getFullYear()}
             </span>
-            <span className="md:inline hidden dark:text-purple-400">
+            <span className="md:inline hidden dark:text-purple-400 text-teal-800">
               {getDateRange(data.startDate, data.endDate)}
             </span>
           </li>
