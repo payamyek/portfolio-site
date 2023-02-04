@@ -11,10 +11,16 @@ import PersonalLinks from './PersonalLinks'
 import Projects from './Projects'
 import UserDetails from './UserDetails'
 import SideBar from './SideBar'
+import classnames from 'classnames'
 
 let App = () => {
   const [lastUpdated, setLastUpdated] = useState('')
   const [theme, setTheme] = useState('dark')
+  const [loading, setLoading] = useState(true) // prevent FOUC
+
+  useEffect(() => {
+    setLoading(false)
+  }, [])
 
   useEffect(() => {
     getBranchLatestCommitDate().then((date) => setLastUpdated(date))
@@ -43,7 +49,7 @@ let App = () => {
   }, [theme])
 
   return (
-    <div className="flex">
+    <div className={classnames({ flex: !loading, hidden: loading })}>
       <SideBar
         theme={theme}
         setTheme={setTheme}
