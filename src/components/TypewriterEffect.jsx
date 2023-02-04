@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 type TypewriterEffectProps = {
   timeout?: Number,
   pause?: Number,
+  callback?: Function,
   deletionRate?: Number,
   words: Array<String>,
 }
@@ -13,7 +14,7 @@ const TypewriterEffect = (props: TypewriterEffectProps) => {
     pause = 850,
     deletionRate = 3,
     words,
-    callback,
+    callback = () => {},
   } = props
 
   const el = useRef(null)

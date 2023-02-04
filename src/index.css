@@ -6,6 +6,8 @@ body {
   @apply bg-sky-100 dark:bg-zinc-900;
   @apply text-teal-800 dark:text-lime-400;
 
+  @apply transition-[background-color] ease-in;
+
   margin: 0;
   font-family: 'IBM Plex Mono', monospace;
   -webkit-font-smoothing: antialiased;
