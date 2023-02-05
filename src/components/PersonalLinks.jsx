@@ -13,7 +13,7 @@ const PersonalLinks = () => (
         key={i}>
         <FontAwesomeIcon
           icon={link.icon}
-          className="hover:scale-105"
+          className="clickable"
         />
       </a>
     ))}

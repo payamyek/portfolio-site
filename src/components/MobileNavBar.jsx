@@ -14,15 +14,17 @@ const MobileNavBar = (props) => {
         className="text-center flex-1 font-bold cursor-pointer hover:dark:text-lime-200  hover:text-teal-600 underline dark:text-purple-400 text-amber-800">
         Bλog
       </a>
-      <div className="flex-1 text-xl hover:scale-110 hover:rotate-90 transition ease-in-out delay-550 cursor-pointer text-center dark:text-purple-400 text-amber-800">
+      <div className="flex-1 text-xl hover:rotate-90 transition ease-in-out text-center dark:text-purple-400 text-amber-800">
         {props.theme === 'dark' ? (
           <FontAwesomeIcon
             icon={faSun}
+            className="clickable"
             onClick={() => props.setTheme('light')}
           />
         ) : (
           <FontAwesomeIcon
             icon={faMoon}
+            className="clickable"
             onClick={() => props.setTheme('dark')}
           />
         )}

@@ -1,9 +1,7 @@
-import SectionHeading from './SectionHeading.tsx'
-
 const AboutMe = () => (
   <div className="flex-col flex md:mt-6 mt-5">
     <div className="flex flex-row">
-      <SectionHeading content="About Me" />
+      <h1>About Me</h1>
     </div>
     <div className="flex flex-row">
       <p className="lg:text-xl md:text-l text-sm text-justify dark:text-white ">

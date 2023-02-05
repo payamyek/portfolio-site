@@ -1,11 +1,10 @@
 import { experiences } from '../data'
 import { getDateRange } from '../utils/dateUtils'
-import SectionHeading from './SectionHeading.tsx'
 
 const Experiences = () => (
   <div className="flex-col flex md:mt-6 mt-5">
     <div className="flex flex-row">
-      <SectionHeading content="Experience" />
+      <h1>Experiences</h1>
     </div>
     <div className="flex flex-row">
       <ul className="dark:text-white text-amber-800 lg:text-xl md:text-l text-sm flex-1">
