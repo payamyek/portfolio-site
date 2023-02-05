@@ -1,6 +1,3 @@
-import '../index.css'
-import './App.css'
-
 import { useEffect, useState } from 'react'
 import { getBranchLatestCommitDate } from '../api/githubAPI'
 import AboutMe from './AboutMe'
@@ -13,6 +10,8 @@ import UserDetails from './UserDetails'
 import NavBar from './NavBar'
 import classnames from 'classnames'
 import MobileNavBar from './MobileNavBar'
+
+import './App.css'
 
 let App = () => {
   const [lastUpdated, setLastUpdated] = useState('')
