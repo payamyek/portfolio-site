@@ -1,7 +1,8 @@
 import { links } from '../data'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const PersonalLinks = () => (
-  <div className="md:flex-1 md:text-3xl md:mt-0 flex text-xl mt-3 font-bold text-center items-end">
+  <div className="lg:flex-1 lg:text-3xl lg:mt-0 flex text-xl mt-3 font-bold text-center items-end">
     {links.map((link, i) => (
       <a
         className="flex-1 cursor-pointer"
@@ -19,4 +20,4 @@ const PersonalLinks = () => (
   </div>
 )
 
-export default PersonalLinks;
+export default PersonalLinks

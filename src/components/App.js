@@ -10,8 +10,9 @@ import PageHeading from './PageHeading'
 import PersonalLinks from './PersonalLinks'
 import Projects from './Projects'
 import UserDetails from './UserDetails'
-import SideBar from './SideBar'
+import NavBar from './NavBar'
 import classnames from 'classnames'
+import MobileNavBar from './MobileNavBar'
 
 let App = () => {
   const [lastUpdated, setLastUpdated] = useState('')
@@ -50,13 +51,14 @@ let App = () => {
 
   return (
     <div className={classnames({ flex: !loading, hidden: loading })}>
-      <SideBar
+      <NavBar
         theme={theme}
         setTheme={setTheme}
       />
-      <div className="md:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 md:w-4/5 w-5/6 select-none">
-        <div className="md:flex-row flex flex-col ">
-          <PageHeading
+      <div className="lg:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 lg:w-4/5 w-5/6 select-none">
+        <div className="lg:flex-row flex flex-col">
+          <PageHeading />
+          <MobileNavBar
             setTheme={setTheme}
             theme={theme}
           />
@@ -68,7 +70,7 @@ let App = () => {
         <Projects />
         <Footer lastUpdated={lastUpdated} />
       </div>
-      <div className="basis-1/4"></div>
+      <div className="basis-1/4 hidden lg:flex"></div>
     </div>
   )
 }

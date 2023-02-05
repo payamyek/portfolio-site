@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 
-const SideBar = (props) => {
+const NavBar = (props) => {
   return (
-    <div className="basis-1/4 flex flex-col gap-5 pt-[5%] pl-16 text-xl">
+    <div className="basis-1/4 lg:flex flex-col gap-5 pt-[5%] pl-16 text-xl hidden">
       {props.theme === 'dark' ? (
         <FontAwesomeIcon
           icon={faSun}
@@ -31,4 +31,4 @@ const SideBar = (props) => {
   )
 }
 
-export default SideBar
+export default NavBar

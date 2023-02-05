@@ -1,10 +1,12 @@
+import SectionHeading from './SectionHeading'
+
 const AboutMe = () => (
   <div className="flex-col flex md:mt-6 mt-5">
     <div className="flex flex-row">
-      <h1 className="md:text-3xl text-xl mb-3">About Me</h1>
+      <SectionHeading content="About Me" />
     </div>
     <div className="flex flex-row">
-      <p className="md:text-xl text-justify dark:text-white text-sm">
+      <p className="lg:text-xl md:text-l text-sm text-justify dark:text-white ">
         I am a
         <span className="font-bold">&nbsp;full-stack developer&nbsp;</span>
         currently working at the
@@ -22,4 +24,4 @@ const AboutMe = () => (
   </div>
 )
 
-export default AboutMe;
+export default AboutMe

@@ -1,8 +1,9 @@
 import TypewriterEffect from './TypewriterEffect'
+
 const PageHeading = () => {
   return (
-    <div className="md:flex-1 md:basis-3/5 pb-0" >
-      <h1 className="md:text-5xl md:min-h-[50px] text-2xl font-bold min-h-[40px] md:text-left text-center">
+    <div className="lg:flex-1 lg:basis-3/5 pb-0">
+      <h1 className="lg:text-5xl lg:min-h-[50px] md:text-3xl text-2xl font-bold min-h-[40px] lg:text-left text-center">
         <TypewriterEffect
           words={[
             'Greetings Visitor!',
@@ -11,7 +12,8 @@ const PageHeading = () => {
           ]}
         />
       </h1>
-    </div>)
+    </div>
+  )
 }
 
-export default PageHeading;
+export default PageHeading
