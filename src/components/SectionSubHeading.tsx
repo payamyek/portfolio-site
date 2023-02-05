@@ -1,8 +1,8 @@
 import classnames from 'classnames'
 
 type SectionSubHeadingProps = {
-  content: String,
-  className?: String,
+  content: String
+  className?: String
 }
 
 const SectionSubHeading = (props: SectionSubHeadingProps) => (

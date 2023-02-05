@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 
 type TypewriterEffectProps = {
-  timeout?: Number,
-  pause?: Number,
-  callback?: Function,
-  deletionRate?: Number,
-  words: Array<String>,
+  timeout?: Number
+  pause?: Number
+  callback?: Function
+  deletionRate?: Number
+  words: Array<String>
 }
 
 const TypewriterEffect = (props: TypewriterEffectProps) => {
@@ -28,8 +28,10 @@ const TypewriterEffect = (props: TypewriterEffectProps) => {
       element,
       timeout,
       words,
+      pause,
       arrayIndex,
       stringIndex,
+      deletionRate,
       isAddChar = true,
     }) => {
       if (finished) {
@@ -62,6 +64,7 @@ const TypewriterEffect = (props: TypewriterEffectProps) => {
             words,
             arrayIndex,
             stringIndex,
+            deletionRate,
             isAddChar: false,
           })
         } else {
@@ -72,6 +75,7 @@ const TypewriterEffect = (props: TypewriterEffectProps) => {
             words,
             arrayIndex,
             stringIndex: stringIndex + 1,
+            deletionRate,
             isAddChar,
           })
         }
@@ -88,6 +92,7 @@ const TypewriterEffect = (props: TypewriterEffectProps) => {
             arrayIndex: arrayIndex + 1,
             stringIndex: 0,
             isAddChar: true,
+            deletionRate,
           })
         } else {
           typingEffect({
@@ -98,6 +103,7 @@ const TypewriterEffect = (props: TypewriterEffectProps) => {
             arrayIndex,
             stringIndex: stringIndex - 1,
             isAddChar,
+            deletionRate,
           })
         }
       }
@@ -119,6 +125,7 @@ const TypewriterEffect = (props: TypewriterEffectProps) => {
       arrayIndex: 0,
       stringIndex: 0,
       isAddChar: true,
+      deletionRate,
     })
 
     return () => {

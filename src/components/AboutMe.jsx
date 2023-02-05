@@ -1,4 +1,4 @@
-import SectionHeading from './SectionHeading'
+import SectionHeading from './SectionHeading.tsx'
 
 const AboutMe = () => (
   <div className="flex-col flex md:mt-6 mt-5">

@@ -1,6 +1,6 @@
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import SectionSubHeading from './SectionSubHeading'
+import SectionSubHeading from './SectionSubHeading.tsx'
 
 let ProjectDetails = (props) => {
   const { link, name, tech, description } = props

@@ -1,4 +1,4 @@
-import TypewriterEffect from './TypewriterEffect'
+import TypewriterEffect from './TypewriterEffect.tsx'
 
 const PageHeading = () => {
   return (

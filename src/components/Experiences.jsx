@@ -1,6 +1,6 @@
 import { experiences } from '../data'
 import { getDateRange } from '../utils/dateUtils'
-import SectionHeading from './SectionHeading'
+import SectionHeading from './SectionHeading.tsx'
 
 const Experiences = () => (
   <div className="flex-col flex md:mt-6 mt-5">
