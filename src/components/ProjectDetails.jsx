@@ -13,7 +13,7 @@ let ProjectDetails = (props) => {
             &nbsp;{tech}
           </span>
         </span>
-        <h2 className="font-light text-green-800 dark:text-purple-400">
+        <h2 className="font-light text-green-800 dark:text-purple-400 mt-3 mb-0">
           {link === undefined ? (
             'Private'
           ) : (

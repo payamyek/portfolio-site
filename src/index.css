@@ -5,11 +5,11 @@
 
 @layer base {
     h1 {
-        @apply lg:text-3xl md:text-2xl text-xl mb-3
+        @apply lg:text-3xl md:text-2xl text-xl mb-3;
     }
 
     h2 {
-        @apply lg:text-2xl md:text-xl text-lg mb-3
+        @apply lg:text-2xl md:text-xl text-lg mb-3;
     }
 
     p {
