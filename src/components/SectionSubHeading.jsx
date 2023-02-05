@@ -1,6 +1,11 @@
 import classnames from 'classnames'
 
-const SectionSubHeading = (props) => (
+type SectionSubHeadingProps = {
+  content: String,
+  className?: String,
+}
+
+const SectionSubHeading = (props: SectionSubHeadingProps) => (
   <h1
     className={classnames(
       'lg:text-2xl md:text-xl text-l mb-3 underline',

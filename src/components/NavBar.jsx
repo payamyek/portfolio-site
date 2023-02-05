@@ -21,12 +21,12 @@ const NavBar = (props) => {
       </div>
       <a
         href="/"
-        className="font-bold cursor-pointer hover:dark:text-lime-200 hover:text-teal-600 pt-5">
+        className="font-bold cursor-pointer hover:dark:text-lime-200 hover:text-teal-600 mt-5">
         Home
       </a>
       <a
         href="/blog"
-        className="font-bold cursor-pointer hover:dark:text-lime-200  hover:text-teal-600">
+        className="font-bold cursor-pointer hover:dark:text-lime-200 hover:text-teal-600">
         Bλog
       </a>
     </div>
