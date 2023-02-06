@@ -1,29 +1,25 @@
 import { useEffect, useState } from 'react'
-import { getBranchLatestCommitDate } from '../api/githubAPI'
-import AboutMe from './AboutMe'
-import Experiences from './Experiences'
-import Footer from './Footer'
-import PageHeading from './PageHeading'
-import PersonalLinks from './PersonalLinks'
-import Projects from './Projects'
-import UserDetails from './UserDetails'
-import NavBar from './NavBar'
+import PageHeading from '../components/PageHeading'
+import PersonalLinks from '../components/PersonalLinks'
+import NavBar from '../components/NavBar'
 import classnames from 'classnames'
-import MobileNavBar from './MobileNavBar'
+import MobileNavBar from '../components/MobileNavBar'
 
-import './App.css'
+import Footer from './Footer'
+import { getBranchLatestCommitDate } from '../api/githubAPI'
+import UserDetails from './UserDetails'
 
-let App = () => {
+let Home = (props) => {
   const [lastUpdated, setLastUpdated] = useState('')
   const [theme, setTheme] = useState('dark')
   const [loading, setLoading] = useState(true) // prevent FOUC
 
   useEffect(() => {
-    setLoading(false)
+    getBranchLatestCommitDate().then((date) => setLastUpdated(date))
   }, [])
 
   useEffect(() => {
-    getBranchLatestCommitDate().then((date) => setLastUpdated(date))
+    setLoading(false)
   }, [])
 
   useEffect(() => {
@@ -64,9 +60,7 @@ let App = () => {
           <PersonalLinks />
         </div>
         <UserDetails />
-        <AboutMe />
-        <Experiences />
-        <Projects />
+        {props.children}
         <Footer lastUpdated={lastUpdated} />
       </div>
       <div className="basis-1/4 hidden lg:flex"></div>
@@ -74,4 +68,4 @@ let App = () => {
   )
 }
 
-export default App
+export default Home

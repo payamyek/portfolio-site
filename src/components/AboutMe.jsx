@@ -1,5 +1,5 @@
 const AboutMe = () => (
-  <div className="flex-col flex md:mt-6 mt-5">
+  <div>
     <div className="flex flex-row">
       <h1>About Me</h1>
     </div>

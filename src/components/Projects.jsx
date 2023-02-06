@@ -2,7 +2,7 @@ import { projects } from '../data'
 import ProjectDetails from './ProjectDetails'
 
 const Projects = () => (
-  <div className="flex-col flex md:mt-6 mt-5">
+  <div>
     <div className="flex flex-row">
       <h1>Projects</h1>
     </div>
