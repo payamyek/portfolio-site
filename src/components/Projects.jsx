@@ -4,7 +4,7 @@ import ProjectDetails from './ProjectDetails'
 const Projects = () => (
   <div>
     <div className="flex flex-row">
-      <h1>Projects</h1>
+      <h1 className="mb-0">Projects</h1>
     </div>
     {projects.map((project, i) => (
       <ProjectDetails
