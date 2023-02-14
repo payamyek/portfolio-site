@@ -1,12 +1,12 @@
+import classnames from 'classnames'
 import { useEffect, useState } from 'react'
+import MobileNavBar from '../components/MobileNavBar'
+import NavBar from '../components/NavBar'
 import PageHeading from '../components/PageHeading'
 import PersonalLinks from '../components/PersonalLinks'
-import NavBar from '../components/NavBar'
-import classnames from 'classnames'
-import MobileNavBar from '../components/MobileNavBar'
 
-import Footer from './Footer'
 import { getBranchLatestCommitDate } from '../api/githubAPI'
+import Footer from './Footer'
 import UserDetails from './UserDetails'
 
 let Home = (props) => {
@@ -45,7 +45,7 @@ let Home = (props) => {
   }, [theme])
 
   return (
-    <div className={classnames({ flex: !loading, hidden: loading })}>
+    <div className={classnames({ flex: !loading, hidden: loading }, 'h-screen')}>
       <NavBar
         theme={theme}
         setTheme={setTheme}
