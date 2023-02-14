@@ -13,8 +13,20 @@ const TypewriterEffect = (props: TypewriterEffectProps) => {
   const el = useRef(null)
 
   useEffect(() => {
+    if (el.current === null)
+      return
+
     let timeoutId
     const elCopy = el.current
+
+    // only render on first load
+    if (sessionStorage.getItem("first-load") !== null) {
+        el.current.innerText = words[words.length - 1]
+        return
+    } 
+  
+    // update session storage
+    sessionStorage.setItem("first-load", "false");
 
     const typingEffect = ({
       timeout,
