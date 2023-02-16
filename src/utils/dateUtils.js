@@ -1,16 +1,16 @@
 const MONTHS = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
+  'January',
+  'February',
+  'March',
+  'April',
   'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ]
 
 const MILLISECONDS = {
@@ -24,7 +24,7 @@ const MILLISECONDS = {
 
 const getMonthYear = (date) => {
   if (date === undefined || date === null) return 'Present'
-  return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`
+  return `${MONTHS[date.getMonth()].slice(0, 3)} ${date.getFullYear()}`
 }
 
 const dateDifferenceInMonths = (startDate, endDate) => {
@@ -87,4 +87,17 @@ const getRelativeDate = (date) => {
   return `${value} ${units}${value === 1 ? '' : 's'} ago`
 }
 
-export { getDateRange, getRelativeDate, MILLISECONDS }
+
+// expects unix date in seconds
+const getShortDate = (date) => {
+  // eslint-disable-next-line
+  const shortDate = new Date(date * MILLISECONDS.SECONDS);
+  return `${MONTHS[shortDate.getMonth()]} ${shortDate.getDate()}, ${shortDate.getFullYear()}`
+}
+
+const getYear = (date) => {
+  return new Date(date * MILLISECONDS.SECONDS).getFullYear();
+}
+
+export { getDateRange, getRelativeDate, getShortDate, getYear, MILLISECONDS }
+
