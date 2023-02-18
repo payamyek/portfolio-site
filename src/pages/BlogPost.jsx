@@ -7,23 +7,32 @@ const BlogPost = (props) => {
   // url parameter
   const { id } = useParams();
 
+  // markdown
   const [md, setMd] = useState('')
 
   useEffect(() => {
-    const fn = async () => {
+    // prevent race conditions
+    let subscribed = false;
+
+    (async () => {
       // find filename
       const result = toc.filter((item) => item.title === decodeURI(id))
 
-      if (!result.length)
+      // safeguards
+      if (!result.length || !result[0].fileName)
         return
 
       // load markdown
-      const mdModule = await import(`../posts/${result[0].fileName}`)
-      const resp = await fetch(mdModule.default)
+      const module = await import(`../posts/${result[0].fileName}`)
+      const resp = await fetch(module.default)
       const respText = await resp.text()
-      setMd(respText)
-    }
-    fn()
+
+      // update state 
+      if (!subscribed)
+        setMd(respText)
+    })();
+
+    return () => { subscribed = true }
   }, [id])
 
   return (

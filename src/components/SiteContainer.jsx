@@ -16,22 +16,23 @@ let Home = (props) => {
 
   useEffect(() => {
     getBranchLatestCommitDate().then((date) => setLastUpdated(date))
-  }, [])
-
-  useEffect(() => {
     setLoading(false)
   }, [])
 
   useEffect(() => {
-    if (localStorage.theme === undefined || localStorage.theme === 'dark') {
-      setTheme('dark')
-    } else {
+    if (localStorage.theme === 'light') {
       setTheme('light')
+    } else {
+      setTheme('dark')
     }
   }, [])
 
   useEffect(() => {
     const meta = document.querySelector("meta[name='theme-color']")
+
+    // safeguard
+    if (meta === undefined)
+      return
 
     if (theme === 'dark') {
       document.documentElement.classList.add('dark')
