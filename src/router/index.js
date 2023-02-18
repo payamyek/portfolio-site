@@ -7,6 +7,7 @@ import Home from "../pages/Home"
 /* lazy load components */
 const Blog = React.lazy(() => import('../pages/Blog'))
 const BlogPost = React.lazy(() => import("../pages/BlogPost"))
+const BlogPost404 = React.lazy(() => import("../pages/BlogPost404"))
 
 const router = createBrowserRouter([
   {
@@ -33,12 +34,20 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: 'error',
+        element: (
+          <React.Suspense fallback={<h1>Loading</h1>}>
+            <BlogPost404 />
+          </React.Suspense>
+        ),
+      },
+      {
         path: ':id',
         element: (
           <React.Suspense fallback={<h1>Loading</h1>}>
             <BlogPost />
           </React.Suspense>
-        ),
+        )
       },
     ]
   }

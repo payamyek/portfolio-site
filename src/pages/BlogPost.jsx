@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toc from "../posts/toc.json";
 
 const BlogPost = (props) => {
@@ -9,6 +9,8 @@ const BlogPost = (props) => {
 
   // markdown
   const [md, setMd] = useState('')
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // prevent race conditions
@@ -19,8 +21,10 @@ const BlogPost = (props) => {
       const result = toc.filter((item) => item.title === decodeURI(id))
 
       // safeguards
-      if (!result.length || !result[0].fileName)
+      if (!result.length || !result[0].fileName) {
+        navigate("/blog/error")
         return
+      }
 
       // load markdown
       const module = await import(`../posts/${result[0].fileName}`)
@@ -28,12 +32,13 @@ const BlogPost = (props) => {
       const respText = await resp.text()
 
       // update state 
-      if (!subscribed)
+      if (!subscribed) {
         setMd(respText)
+      }
     })();
 
     return () => { subscribed = true }
-  }, [id])
+  }, [id, navigate])
 
   return (
     <ReactMarkdown children={md} />
