@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import BlogPostLink from "../components/BlogPostLink"
 import toc from "../posts/toc.json"
 import { getShortDate, getYear } from "../utils/dateUtils"
 
@@ -9,19 +10,6 @@ type BlogPostProps = {
 }
 
 const Blog = () => {
-
-  const BlogPostLink = (props: BlogPostProps) => {
-    return (
-      <div className="flex">
-        <div className="underline hover:dark:text-purple-400 hover:text-amber-800">
-          <Link to={`/blog/${props.title}`}>
-            {props.title}
-          </Link>
-        </div>
-        <div className="ml-auto">{getShortDate(props.creationDate)}</div>
-      </div>
-    )
-  }
 
   const renderBlogPostLinks = () => {
     // tracked years

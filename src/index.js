@@ -4,16 +4,13 @@ import './index.css'
 import reportWebVitals from './reportWebVitals'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
-import router from './router'
 import { RouterProvider } from 'react-router-dom'
-import SiteContainer from './components/SiteContainer'
+import router from './router'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <SiteContainer>
-      <RouterProvider router={router} />
-    </SiteContainer>
+    <RouterProvider router={router} />
   </React.StrictMode>
 )
 
