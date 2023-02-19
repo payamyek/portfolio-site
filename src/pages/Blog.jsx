@@ -1,13 +1,6 @@
-import { Link } from "react-router-dom"
 import BlogPostLink from "../components/BlogPostLink"
 import toc from "../posts/toc.json"
-import { getShortDate, getYear } from "../utils/dateUtils"
-
-type BlogPostProps = {
-  id: Number,
-  title: String,
-  creationDate: Number
-}
+import { getYear } from "../utils/dateUtils"
 
 const Blog = () => {
 
@@ -27,15 +20,15 @@ const Blog = () => {
     // add all components
     for (const item of tocSorted) {
       if (!years.has(getYear(item.creationDate)))
-        htmlComponents.push(<h2 className="m-0" key={index++}>{getYear(item.creationDate)}</h2>)
+        htmlComponents.push(<h2 className="m-0 text-amber-800 dark:text-purple-400" key={index++}>{getYear(item.creationDate)}</h2>)
       htmlComponents.push(<BlogPostLink id={index++} {...item} />)
     }
     return htmlComponents
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <h1 className="m-0 mb-2">Blog Posts</h1>
+    <div className="flex flex-col md:gap-4 gap-2">
+      <h1 className="md:mb-2 m-0">Blog Posts</h1>
       {renderBlogPostLinks()}
     </div>
   )

@@ -52,7 +52,7 @@ let Home = (props) => {
         theme={theme}
         setTheme={setTheme}
       />
-      <div className="lg:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 lg:w-4/5 w-5/6 select-none">
+      <div className="lg:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 lg:w-4/5 w-[85%] select-none">
         <div className="lg:flex-row flex flex-col">
           {props.isCondensedView ? null : <PageHeading />}
           <MobileNavBar

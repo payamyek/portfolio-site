@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useNavigate, useParams } from "react-router-dom";
+import rehypeHighlight from 'rehype-highlight';
 import toc from "../posts/toc.json";
 
 const BlogPost = (props) => {
@@ -41,7 +42,7 @@ const BlogPost = (props) => {
   }, [id, navigate])
 
   return (
-    <ReactMarkdown children={md} />
+    <ReactMarkdown rehypePlugins={[rehypeHighlight]} children={md} className="text-justify whitespace-pre-line text-[1.1rem]" />
   )
 }
 
