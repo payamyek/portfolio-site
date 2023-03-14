@@ -1,41 +1,39 @@
-import { useEffect, useState } from 'react'
-import { getBranchLatestCommitDate } from '../api/githubAPI'
-import AboutMe from './AboutMe'
-import Experiences from './Experiences'
-import Footer from './Footer'
-import PageHeading from './PageHeading'
-import PersonalLinks from './PersonalLinks'
-import Projects from './Projects'
-import UserDetails from './UserDetails'
-import NavBar from './NavBar'
 import classnames from 'classnames'
-import MobileNavBar from './MobileNavBar'
+import { useEffect, useState } from 'react'
+import MobileNavBar from '../components/MobileNavBar'
+import NavBar from '../components/NavBar'
+import PageHeading from '../components/PageHeading'
+import PersonalLinks from '../components/PersonalLinks'
 
-import './App.css'
+import { Outlet } from 'react-router-dom'
+import { getBranchLatestCommitDate } from '../api/githubAPI'
+import Footer from '../components/Footer'
+import UserDetails from '../components/UserDetails'
 
-let App = () => {
+let Home = (props) => {
   const [lastUpdated, setLastUpdated] = useState('')
   const [theme, setTheme] = useState('dark')
   const [loading, setLoading] = useState(true) // prevent FOUC
 
   useEffect(() => {
+    getBranchLatestCommitDate().then((date) => setLastUpdated(date))
     setLoading(false)
   }, [])
 
   useEffect(() => {
-    getBranchLatestCommitDate().then((date) => setLastUpdated(date))
-  }, [])
-
-  useEffect(() => {
-    if (localStorage.theme === undefined || localStorage.theme === 'dark') {
-      setTheme('dark')
-    } else {
+    if (localStorage.theme === 'light') {
       setTheme('light')
+    } else {
+      setTheme('dark')
     }
   }, [])
 
   useEffect(() => {
     const meta = document.querySelector("meta[name='theme-color']")
+
+    // safeguard
+    if (meta === undefined)
+      return
 
     if (theme === 'dark') {
       document.documentElement.classList.add('dark')
@@ -49,24 +47,22 @@ let App = () => {
   }, [theme])
 
   return (
-    <div className={classnames({ flex: !loading, hidden: loading })}>
+    <div className={classnames({ flex: !loading, hidden: loading }, 'h-screen')}>
       <NavBar
         theme={theme}
         setTheme={setTheme}
       />
-      <div className="lg:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 lg:w-4/5 w-5/6 select-none">
+      <div className="lg:mt-10 mx-auto flex flex-col mt-5 xl:w-1/2 lg:w-4/5 w-[85%] select-none">
         <div className="lg:flex-row flex flex-col">
-          <PageHeading />
+          {props.isCondensedView ? null : <PageHeading />}
           <MobileNavBar
             setTheme={setTheme}
             theme={theme}
           />
-          <PersonalLinks />
+          {props.isCondensedView ? null : <PersonalLinks />}
         </div>
-        <UserDetails />
-        <AboutMe />
-        <Experiences />
-        <Projects />
+        {props.isCondensedView ? null : <UserDetails />}
+        <Outlet />
         <Footer lastUpdated={lastUpdated} />
       </div>
       <div className="basis-1/4 hidden lg:flex"></div>
@@ -74,4 +70,4 @@ let App = () => {
   )
 }
 
-export default App
+export default Home

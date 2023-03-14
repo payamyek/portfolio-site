@@ -2,7 +2,7 @@ import { experiences } from '../data'
 import { getDateRange } from '../utils/dateUtils'
 
 const Experiences = () => (
-  <div className="flex-col flex md:mt-6 mt-5">
+  <div>
     <div className="flex flex-row">
       <h1>Experiences</h1>
     </div>

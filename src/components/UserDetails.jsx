@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGraduationCap, faMapPin } from '@fortawesome/free-solid-svg-icons'
 
 const UserDetails = () => (
-  <div className="lg:flex lg:flex-row hidden gap-x-4 mt-1">
+  <div className="lg:flex lg:flex-row hidden gap-x-4 mt-1 md:mb-7 mb-6">
     <div className="flex flex-col">
       <span className="lg:text-lg">
         <FontAwesomeIcon icon={faMapPin} />{' '}

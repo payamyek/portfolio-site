@@ -4,7 +4,7 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 const NavBar = (props) => {
   return (
     <div className="basis-1/4 lg:flex flex-col gap-5 pt-[5%] text-xl hidden items-center select-none">
-      <div className="text-3xl justify-self-start">
+      <div className="lg:text-4xl text-3xl justify-self-start">
         {props.theme === 'dark' ? (
           <FontAwesomeIcon
             icon={faSun}
