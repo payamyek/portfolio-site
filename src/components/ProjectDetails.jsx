@@ -5,35 +5,36 @@ let ProjectDetails = (props) => {
   const { link, name, tech, description } = props
 
   return (
-    <div className="mt-5">
+    <div className="flex flex-col md:mt-3 mt-2">
       <div className="flex flex-row">
         <span className="flex-1">
-          <span className="md:text-2xl text-xl underline dark:text-purple-400">
-            {name}
-          </span>
+          <h2 className="dark:text-purple-400 inline underline">{name}</h2>
           <span className="md:inline hidden md:text-base text-yellow-800 dark:text-lime-400">
             &nbsp;{tech}
           </span>
         </span>
-        <span className="md:text-2xl text-xl font-light text-green-800 dark:text-purple-400">
+        <h2 className="font-light text-green-800 dark:text-purple-400">
           {link === undefined ? (
-            <span className="">Private</span>
+            'Private'
           ) : (
             <a
               href={link}
               rel="noreferrer"
               target="_blank"
               aria-label="View Project's Git Repository."
-              className="hover:text-green-600 dark:hover:text-purple-50">
+              className="hover:text-green-700 dark:hover:text-purple-50">
               Code&nbsp;
-              <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+              <FontAwesomeIcon
+                icon={faArrowUpRightFromSquare}
+                className="clickable"
+              />
             </a>
           )}
-        </span>
+        </h2>
       </div>
-      <div className="flex flex-row mt-5">
+      <div className="flex flex-row">
         <div className="flex flex-col flex-1">
-          <p className="md:text-xl text-sm dark:text-white text-justify">
+          <p className="lg:text-xl md:text-lg text-sm dark:text-white text-justify">
             {description}
           </p>
         </div>

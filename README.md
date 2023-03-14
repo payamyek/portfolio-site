@@ -18,17 +18,16 @@ npm install
 npm run start
 ```
 
-  
-  
 <h2>💻 Built with</h2>
 
 Technologies used in the project:
 
-*   TailwindCSS
-*   JavaScript
-*   Vercel
-*   React.js
+* Preact.js (3Kb Alternative to React.js)
+* Tailwind CSS
+* JavaScript
+* Vercel
+* Markdown
 
 <h2>🛡️ License:</h2>
 
-This project is licensed under the MIT
+This project is licensed under the MIT license
