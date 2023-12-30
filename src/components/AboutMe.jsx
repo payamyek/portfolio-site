@@ -12,11 +12,6 @@ const AboutMe = () => (
           &nbsp;Municipal Property Assessment Corporation.&nbsp;
         </span>
         I have always been interested in technology and building new things.
-        Which is why I am currently learning
-        <span className="font-bold">&nbsp;Rust&nbsp;</span>in hopes of using it
-        to power a new
-        <span className="font-bold">&nbsp;chess engine&nbsp;</span>I am
-        currently building!
       </p>
     </div>
   </div>
