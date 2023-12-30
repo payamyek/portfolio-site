@@ -26,9 +26,15 @@ export const links = [
 
 export const experiences = [
   {
+    position: 'I.T Manager',
+    company: 'MPAC',
+    startDate: new Date(2023, 7),
+  },
+  {
     position: 'Systems Developer',
     company: 'MPAC',
     startDate: new Date(2022, 8),
+    endDate: new Date(2023, 7)
   },
   {
     position: 'Junior Systems Developer',
