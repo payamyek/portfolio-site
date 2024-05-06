@@ -3,7 +3,7 @@ import { faEnvelope, faFilePdf } from '@fortawesome/free-solid-svg-icons'
 
 export const links = [
   {
-    url: 'https://cdn.jsdelivr.net/gh/payamyek/career@f656d1bd754eb69246198a8be52450fbf75b4e71/resume/resume.pdf',
+    url: 'https://cdn.jsdelivr.net/gh/payamyek/career@de41090504e68c32f577f91b84474c8f3e3d525c/resume/resume.pdf',
     icon: faFilePdf,
     ariaLabel: 'Download my resume.',
   },
@@ -26,7 +26,7 @@ export const links = [
 
 export const experiences = [
   {
-    position: 'I.T Manager',
+    position: 'Fullstack Developer (I.T Manager)',
     company: 'MPAC',
     startDate: new Date(2023, 7),
   },
