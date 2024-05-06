@@ -6,7 +6,7 @@ const Footer = (props) => (
       <small>Last updated {getRelativeDate(new Date(props.lastUpdated))}</small>
     </div>
     <div>
-      <small>&copy; Copyright 2023, Payam Yektamaram</small>
+      <small>&copy; Copyright {new Date().getFullYear()}, Payam Yektamaram</small>
     </div>
   </footer>
 )
