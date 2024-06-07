@@ -9,7 +9,7 @@ const AboutMe = () => (
         <span className="font-bold">&nbsp;full-stack developer&nbsp;</span>
         currently working at the
         <span className="font-bold">
-          &nbsp;Municipal Property Assessment Corporation.&nbsp;
+          &nbsp;Municipal Property Assessment Corporation in the Commercial Divison.&nbsp;
         </span>
         I have always been interested in technology and building new things.
       </p>
