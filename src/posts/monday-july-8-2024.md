@@ -36,7 +36,7 @@ I will simply plant these **184 trees** in my parent's backyard.
 
 I need to plant 184 trees to offset my carbon emissions. My parent's however every year plant 200 trees in their backyard. I will just help them to plant 184 of them and boom I'm carbon neutral.
 
-I'll tell everyone I helped my parent and then claim I'm carbon neutral. Wow, I'm so smart.
+Wow, I'm so smart.
 
 ### Solution 4 - Convince my parent's to not burn down their existing trees
 
