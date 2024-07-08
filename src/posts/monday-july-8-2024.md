@@ -48,6 +48,6 @@ Then I tell everyone that I stopped my parents from burning 100 trees and preven
 
 ## Which Solution Should I Choose?
 
-The right answer is 1 or 2 but most companies who claim to be carbon-neutral pick solutions that sound more like 3 or 4. The danger with solutions 3 and 4 is that I haven't really done anything to help the environment.
+The right answer is 1 or 2 but most companies who claim to be carbon-neutral pick solutions that sound more like 3 or 4. The danger with the latter solutions is that I haven't really done anything to help the environment.
 
 In solution 3, the trees would have been planted regardless of my efforts. Also, solution 4 is a mere scam where I made up a heroic effort to prevent carbon emissions.
