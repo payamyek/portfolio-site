@@ -18,7 +18,9 @@ const Blog = () => {
 
     // add all components
     for (const item of tocSorted) {
-      if (!years.has(getYear(item.creationDate)))
+      if (!years.has(getYear(item.creationDate))) {
+        years.add(getYear(item.creationDate))
+
         htmlComponents.push(
           <h2
             className="m-0 text-amber-800 dark:text-purple-400"
@@ -26,6 +28,7 @@ const Blog = () => {
             {getYear(item.creationDate)}
           </h2>
         )
+      }
       htmlComponents.push(
         <BlogPostLink
           id={index++}

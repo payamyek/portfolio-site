@@ -87,17 +87,15 @@ const getRelativeDate = (date) => {
   return `${value} ${units}${value === 1 ? '' : 's'} ago`
 }
 
-
 // expects unix date in seconds
 const getShortDate = (date) => {
   // eslint-disable-next-line
-  const shortDate = new Date(date * MILLISECONDS.SECONDS);
-  return `${MONTHS[shortDate.getMonth()]} ${shortDate.getDate()}, ${shortDate.getFullYear()}`
+  const shortDate = new Date(date * MILLISECONDS.SECONDS)
+  return `${MONTHS[shortDate.getMonth()]} ${shortDate.getDate()}`
 }
 
 const getYear = (date) => {
-  return new Date(date * MILLISECONDS.SECONDS).getFullYear();
+  return new Date(date * MILLISECONDS.SECONDS).getFullYear()
 }
 
 export { getDateRange, getRelativeDate, getShortDate, getYear, MILLISECONDS }
-
