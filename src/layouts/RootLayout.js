@@ -12,20 +12,12 @@ import UserDetails from '../components/UserDetails'
 
 let Home = (props) => {
   const [lastUpdated, setLastUpdated] = useState('')
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState(()=> localStorage.getItem('theme'))
   const [loading, setLoading] = useState(true) // prevent FOUC
 
   useEffect(() => {
     getBranchLatestCommitDate().then((date) => setLastUpdated(date))
     setLoading(false)
-  }, [])
-
-  useEffect(() => {
-    if (localStorage.theme === 'light') {
-      setTheme('light')
-    } else {
-      setTheme('dark')
-    }
   }, [])
 
   useEffect(() => {
